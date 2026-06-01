@@ -30,8 +30,13 @@ jobs:
     - name: Run tests
       run: npm test
 
+    - name: Notify Vercel on test success
+      if: success()
+      run: |
+        echo "Tests passed! Ready for deployment to Vercel."
+
     - name: Notify Vercel on test failure
       if: failure()
       run: |
-        echo "Tests failed! Deployment will be blocked."
+        echo "Tests failed! Blocking deployment to Vercel."
         exit 1
