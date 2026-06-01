@@ -35,6 +35,11 @@ jobs:
       run: |
         echo "Tests passed! Ready for deployment to Vercel."
 
+    - name: 'notify vercel'
+      uses: 'vercel/repository-dispatch/actions/status@v1'
+      with:
+        name: Vercel - sdd-assignment: deployment-check
+
     - name: Notify Vercel on test failure
       if: failure()
       run: |
