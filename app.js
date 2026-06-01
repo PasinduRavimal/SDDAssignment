@@ -9,11 +9,9 @@ const contact = require('./routes/contact');
 
 const app = express();
 
-// View engine setup
-app.engine('handlebars', exphbs.engine());
-app.set('view engine', 'handlebars');
-
 app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 app.set('port', config.port);
 
 app.use('/', express.static('public'))
